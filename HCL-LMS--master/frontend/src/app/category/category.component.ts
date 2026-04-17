@@ -37,11 +37,13 @@ export class CategoryComponent implements OnInit {
     );
   }
 
+  // Calculate percentage of max product count for progress bar
   barPercent(c: Category): number {
     const n = Number(c.productCount) || 0;
     return Math.round((n / this.maxProductCount) * 100);
   }
 
+  // Fetch all categories from the backend API
   getCategories(): void {
     this.apiService.getAllCategory().subscribe({
       next: (res: any) => {
@@ -59,6 +61,7 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  // Create a new category if the name is provided
   addCategory(): void {
     if (!this.categoryName) {
       this.showMessage('Category name is required');
@@ -82,6 +85,7 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  // Save changes to an existing category
   editCategory(): void {
     if (!this.editingCategoryId || !this.categoryName) {
       return;
@@ -107,18 +111,21 @@ export class CategoryComponent implements OnInit {
       });
   }
 
+  // Set the form into edit mode for a specific category
   handleEditCategory(category: Category): void {
     this.isEditing = true;
     this.editingCategoryId = category.id;
     this.categoryName = category.name;
   }
 
+  // Exit edit mode and clear the form
   cancelEdit(): void {
     this.isEditing = false;
     this.editingCategoryId = null;
     this.categoryName = '';
   }
 
+  // Prompt for confirmation and delete a category
   handleDeleteCategory(categoryId: string): void {
     if (window.confirm('Are you sure you want to delete this category?')) {
       this.apiService.deleteCategory(categoryId).subscribe({
@@ -139,6 +146,7 @@ export class CategoryComponent implements OnInit {
     }
   }
 
+  // Display a toast message temporarily
   showMessage(message: string) {
     this.message = message;
     setTimeout(() => {
