@@ -42,14 +42,14 @@ export class DashboardComponent implements OnInit {
     this.loadUser();
     this.loadSummary();
   }
-
+  // Loads logged-in user details to personalize dashboard (e.g., welcome message)
   loadUser(): void {
     this.apiService.getLoggedInUserInfo().subscribe({
       next: (u) => (this.user = u),
       error: () => {},
     });
   }
-
+   // Fetches dashboard summary data (charts, KPIs) and handles API response
   loadSummary(): void {
     this.apiService.getDashboardSummary().subscribe({
       next: (res: any) => {

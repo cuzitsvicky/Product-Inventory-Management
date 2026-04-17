@@ -1,3 +1,5 @@
+/* Welcome banner with gradient background for dashboard header */
+
 .dash-welcome {
   background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
   border-radius: var(--radius-xl);
@@ -15,6 +17,7 @@
   padding-bottom: 0;
 }
 .dash-welcome .ims-page-title::after { display: none; }
+/* Layout: splits dashboard into main content (charts) and side panel */
 
 .dashboard-split {
   display: grid;

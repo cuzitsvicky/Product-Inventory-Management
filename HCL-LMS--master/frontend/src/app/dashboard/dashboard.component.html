@@ -1,6 +1,6 @@
 <div class="ims-page">
   <p *ngIf="message" class="ims-toast ims-error">{{ message }}</p>
-
+   <!-- Welcome section showing user info and overall inventory summary -->
   <div class="dash-welcome" *ngIf="user">
     <h1 class="ims-page-title">Welcome back, {{ user.name }}</h1>
     <p style="opacity: 0.9; margin-top: 4px; font-weight: 500;" *ngIf="summary">
@@ -78,6 +78,7 @@
     [cards]="summary?.insightCards"></app-insight-card-row>
 
   <div class="dashboard-split" *ngIf="summary">
+    <!-- Revenue analytics section with toggle between bar and line charts -->
     <section class="chart-panel ims-card" *appHasRole="['ADMIN', 'WAREHOUSE_MANAGER', 'PROCUREMENT_OFFICER']">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
         <div>
