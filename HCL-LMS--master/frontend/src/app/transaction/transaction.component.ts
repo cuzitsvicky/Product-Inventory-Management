@@ -37,7 +37,12 @@ export class TransactionComponent implements OnInit {
   valueToSearch = '';
   currentPage = 1;
   totalPages = 0;
+  activePeriod = '1M';
   itemsPerPage = 10;
+
+  setPeriod(period: string) {
+    this.activePeriod = period;
+  }
 
   chartScheme = IMS_CHART_SCHEME;
   schemeType = ScaleType.Ordinal;

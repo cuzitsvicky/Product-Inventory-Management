@@ -17,10 +17,10 @@
         <p class="ims-page-sub">Monthly group view by transaction type</p>
       </div>
       <div class="tx-period-tabs">
-        <button [class.active]="false">7D</button>
-        <button [class.active]="true">1M</button>
-        <button [class.active]="false">3M</button>
-        <button [class.active]="false">1Y</button>
+        <button [class.active]="activePeriod === '7D'" (click)="setPeriod('7D')">7D</button>
+        <button [class.active]="activePeriod === '1M'" (click)="setPeriod('1M')">1M</button>
+        <button [class.active]="activePeriod === '3M'" (click)="setPeriod('3M')">3M</button>
+        <button [class.active]="activePeriod === '1Y'" (click)="setPeriod('1Y')">1Y</button>
       </div>
     </div>
     
@@ -48,25 +48,10 @@
       </p>
     </div>
 
-    <!-- Month Picker Drilldown -->
-    <div class="month-strip-fields" style="margin-top: 24px;">
-      <div>
-        <label class="ims-label">Select Month</label>
-        <select class="ims-select" [(ngModel)]="selectedMonth">
-          <option *ngFor="let m of months" [value]="m.value">{{ m.name }}</option>
-        </select>
-      </div>
-      <div>
-        <label class="ims-label">Select Year</label>
-        <select class="ims-select" [(ngModel)]="selectedYear">
-          <option *ngFor="let y of years" [value]="y">{{ y }}</option>
-        </select>
-      </div>
-      <button type="button" class="ims-btn ims-btn-primary" (click)="applyChartMonth()">View Daily Bars</button>
-    </div>
+
   </section>
 
-  <section class="ims-card" style="padding: 0; overflow: hidden;">
+  <section class="ims-card">
     <div class="table-section-head">
       <h2 class="tx-h2">Transaction Ledger</h2>
     </div>

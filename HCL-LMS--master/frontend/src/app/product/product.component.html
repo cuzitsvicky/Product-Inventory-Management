@@ -10,15 +10,6 @@
 
   <!-- Filter Bar -->
   <div class="prod-filter-bar">
-    <div class="filter-inputs">
-      <input type="text" class="ims-input" placeholder="Search products...">
-      <select class="ims-select">
-        <option value="">All Categories</option>
-      </select>
-      <select class="ims-select">
-        <option value="">All Stock Levels</option>
-      </select>
-    </div>
     <button type="button" class="ims-btn ims-btn-primary" (click)="navigateToAddProductPage()" *appHasRole="['ADMIN']">
       Add product
     </button>
@@ -27,7 +18,6 @@
   <div class="prod-grid" *ngIf="products.length > 0">
     <article class="prod-card" *ngFor="let product of products">
       <div class="prod-thumb">
-        <span class="ims-badge badge-neutral cat-badge">{{ product.category?.name || 'Uncategorized' }}</span>
         <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name" />
         <div *ngIf="!product.imageUrl" class="prod-thumb-fallback">
           {{ product.name?.charAt(0) || '?' }}
@@ -58,9 +48,6 @@
         <div class="prod-actions">
           <button type="button" class="ims-btn ims-btn-ghost" (click)="navigateToEditProductPage(product.id)" *appHasRole="['ADMIN', 'WAREHOUSE_MANAGER']">Edit</button>
           <button type="button" class="ims-btn ims-btn-secondary" (click)="navigateToSellPage(product.id)" *appHasRole="['ADMIN', 'STAFF']">Sell</button>
-          <button type="button" class="ims-btn ims-btn-danger btn-icon-only" (click)="handleProductDelete(product.id)" *appHasRole="['ADMIN']" aria-label="Delete">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-          </button>
         </div>
       </div>
     </article>

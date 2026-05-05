@@ -7,12 +7,6 @@
       <p class="ims-page-sub">Revenue trends · Turnover · Category & supplier analytics</p>
     </div>
     <div class="an-actions">
-      <select class="ims-select an-range" [(ngModel)]="range" (change)="loadAll()" style="max-width: 160px; min-height: 40px;">
-        <option value="THIS_MONTH">This Month</option>
-        <option value="LAST_MONTH">Last Month</option>
-        <option value="THIS_QUARTER">This Quarter</option>
-        <option value="THIS_YEAR">This Year</option>
-      </select>
       <button type="button" class="ims-btn ims-btn-ghost" (click)="exportPdf()">Export PDF</button>
       <button type="button" class="ims-btn ims-btn-ghost" (click)="exportCsv()">Export CSV</button>
     </div>
@@ -20,9 +14,6 @@
 
   <div class="an-tabs">
     <button class="an-tab active">Overview</button>
-    <button class="an-tab">Revenue</button>
-    <button class="an-tab">Inventory</button>
-    <button class="an-tab">Suppliers</button>
   </div>
 
   <div class="ims-loading-overlay" *ngIf="loading">
@@ -97,7 +88,7 @@
 
   <section class="ims-card an-table">
     <h2 class="an-h2">Inventory Turnover Report</h2>
-    <div class="table-scroll">
+    <div class="table-scroll" style="overflow-x: auto; width: 100%;">
       <table class="data-table">
         <thead>
           <tr>

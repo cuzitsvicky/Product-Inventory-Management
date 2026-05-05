@@ -78,9 +78,7 @@ export class AnalyticsComponent implements OnInit {
   }
 
   exportPdf(): void {
-    // Placeholder: export can be added later (server-side)
-    this.message = 'PDF export coming next (CSV works now).';
-    setTimeout(() => (this.message = ''), 4000);
+    window.print();
   }
 
   points(rows: any[]): { name: string; value: number }[] {

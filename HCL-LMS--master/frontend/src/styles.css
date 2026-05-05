@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   /* Brand */
   --primary: #4F46E5;
   --primary-hover: #4338CA;
@@ -217,6 +218,10 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
 }
+.ims-select option {
+  background-color: #FFFFFF;
+  color: #0F172A;
+}
 .ims-label {
   font-size: 13px;
   font-weight: 600;
@@ -268,9 +273,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
   background: var(--surface-2);
   border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 64px; 
-  z-index: 10;
 }
 
 .data-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
