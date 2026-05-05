@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: HCL-LMS
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "2004"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d HCL-LMS"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./HCL-LMS--master/backend
+    ports:
+      - "5050:5050"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/HCL-LMS
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: "2004"
+      IMS_UPLOAD_IMAGES-RELATIVE: /uploads/products/
+    volumes:
+      - product-images:/uploads/products
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./HCL-LMS--master/frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - product-images:/usr/share/nginx/products
+    depends_on:
+      - backend
+
+volumes:
+  postgres-data:
+  product-images:
